@@ -20,7 +20,7 @@ export class SingleSignOn {
   /**
    * Create a new instance of the SingleSignOn class with the given properties set
   **/
-  constructor(client_id = null, secret_key = null, redirect_uri = null, server = SERVERS.tranqulity, options = {}) {
+  constructor(client_id = null, secret_key = null, redirect_uri = null, options = {}, server = SERVERS.tranqulity) {
 
     if(client_id === null)
       throw new TypeError('client id can not be null');
