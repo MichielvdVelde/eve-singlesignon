@@ -82,8 +82,31 @@ export class SingleSignOn {
           return resolve(result);
         })
         .catch(reject);
-
     });
   }
 
+  /**
+   *
+  **/
+  verifyAccessToken(access_token) {
+    return new Promise((resolve, reject) => {
+
+      let options = {
+        method: 'GET',
+        simple: false,
+        uri: this._server + '/oauth/verify',
+        headers: {
+          'Authorization': 'Bearer ' + access_token
+        }
+      };
+
+      request(options)
+        .then((result) => {
+          result = JSON.parse(result);
+          if(result.error) return reject(new Error('CREST Error: ' + result.error + ' (' + result.error_description + ')'));
+          return resolve(result);
+        })
+        .catch(reject);
+    });
+  }
 }
