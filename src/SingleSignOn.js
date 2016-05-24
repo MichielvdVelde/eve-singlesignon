@@ -60,50 +60,47 @@ export class SingleSignOn {
    *
   **/
   getAccessToken(code, refresh_token = false) {
-    return new Promise((resolve, reject) => {
+    let options = {
+      method: 'POST',
+      simple: false,
+      uri: this._server + '/oauth/token',
+      headers: {
+        'Authorization': 'Basic ' + (new Buffer(this._client_id + ':' + this._secret_key)).toString('base64')
+      },
+      form: {
+        grant_type: (refresh_token) ? 'refresh_token' : 'authorization_code',
+        code: code
+      }
+    };
 
-      let options = {
-        method: 'POST',
-        simple: false,
-        uri: this._server + '/oauth/token',
-        headers: {
-          'Authorization': 'Basic ' + (new Buffer(this._client_id + ':' + this._secret_key)).toString('base64')
-        },
-        form: {
-          grant_type: (refresh_token) ? 'refresh_token' : 'authorization_code',
-          code: code
-        }
-      };
-
-      request(options)
-        .then((result) => {
-          result = JSON.parse(result);
-          if(result.error) return reject(new Error('CREST Error: ' + result.error + ' (' + result.error_description + ')'));
-          return resolve(result);
-        })
-        .catch(reject);
-    });
+    return this._request(options);
   }
 
   /**
    *
   **/
   verifyAccessToken(access_token) {
+    let options = {
+      method: 'GET',
+      simple: false,
+      uri: this._server + '/oauth/verify',
+      headers: {
+        'Authorization': 'Bearer ' + access_token
+      }
+    };
+
+    return this._request(options);
+  }
+
+  /**
+   *
+  **/
+  _request(options) {
     return new Promise((resolve, reject) => {
-
-      let options = {
-        method: 'GET',
-        simple: false,
-        uri: this._server + '/oauth/verify',
-        headers: {
-          'Authorization': 'Bearer ' + access_token
-        }
-      };
-
       request(options)
         .then((result) => {
           result = JSON.parse(result);
-          if(result.error) return reject(new Error('CREST Error: ' + result.error + ' (' + result.error_description + ')'));
+          if(result.error) return reject(new Error('SSO Error: ' + result.error + ' (' + result.error_description + ')'));
           return resolve(result);
         })
         .catch(reject);
