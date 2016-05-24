@@ -1,0 +1,10 @@
+{
+	"moz": true,
+	"esnext": true,
+	"globalstrict": true,
+	"node": true,
+	"unused": false,
+	"globals": {
+		"Promise": true
+	}
+}
