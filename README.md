@@ -31,7 +31,7 @@ app.get('/login', function(req, res) {
 });
 
 // This is the callback that is called when the client has logged in
-app.get('sso_callback', function(req, res) {
+app.get('/sso_callback', function(req, res) {
 
 	// Get an access token for this authorization code
 	sso.getAccessToken(req.query.code)
