@@ -19,6 +19,11 @@ export class SingleSignOn {
 
   /**
    * Create a new instance of the SingleSignOn class with the given properties set
+   * @param string client_id The client ID from the developers section
+   * @param string secret_key The client secret from the developers section
+   * @param string redirect_url The redirect URL from the developers section
+   * @param array options Optional option settings
+   * @param string server The URL to the server to use
   **/
   constructor(client_id = null, secret_key = null, redirect_uri = null, options = {}, server = SERVERS.tranqulity) {
 
@@ -40,7 +45,10 @@ export class SingleSignOn {
   }
 
   /**
-   *
+   * Build a redirect URL where the client will be sent to
+   * @param string state Optional state parameter
+   * @param string scope Optional space-delimitd scope list
+   * @return string A fully qualified redirect URL
   **/
   getRedirectUrl(state = null, scope = null) {
 
@@ -57,7 +65,10 @@ export class SingleSignOn {
   }
 
   /**
-   *
+   * Use an authorization code or refresh token to obtain a fresh access token
+   * @param string code The authorization code or refresh token to use
+   * @param bool refresh_token Set to true if tou use a refresh token
+   * @return Promise
   **/
   getAccessToken(code, refresh_token = false) {
     let options = {
@@ -77,7 +88,9 @@ export class SingleSignOn {
   }
 
   /**
-   *
+   * Verify an access token an retrieve baseic information
+   * @param string access_token The access token to verify
+   * @return Promise
   **/
   verifyAccessToken(access_token) {
     let options = {
@@ -93,7 +106,8 @@ export class SingleSignOn {
   }
 
   /**
-   *
+   * Internal method for making requests
+   * @param array options Request options
   **/
   _request(options) {
     return new Promise((resolve, reject) => {
