@@ -4,19 +4,27 @@ This module provides a simple interface to [Eve Online](https://eve-online.com)'
 oAuth process. Requested access tokens can then be used to authenticate an Eve
 character or to access the RESTful CREST API.
 
+Further documentation is forthcoming. For now you can look at the code to find out
+which options (besides the ones shown in the example below) this package supports.
+
 ## Install
 
-Not available on npm yet
+```
+npm install eve-singlesignon --save
+```
 
 ## Set up
 
 In order to use Single Sign-On feature, you first need to create a new application
 in the [developer section](https://developers.eveonline.com).
 
-This will give you the required *client ID* and *secret*. You will also need to give
-the *redirect URL*, the URL where the client will be redirected to after logging in.
+This will give you the required **client ID** and **secret**. You will also need to give
+the **redirect (or callback) URL**, the URL where the client will be redirected to after logging in.
 
 ## Example with Express
+
+This is an incomplete and minimalistic example of how to use the most basic
+functionality. Refer to the source code for further inline documentation.
 
 ```js
 import { default as express } from 'express';
@@ -48,6 +56,11 @@ app.get('/sso_callback', function(req, res) {
 		});
 });
 ```
+
+## Changelog
+
+* v0.0.1 - 25 May 2016
+ * Initial release
 
 ## License
 
