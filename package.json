@@ -2,11 +2,13 @@
   "name": "eve-singlesignon",
   "version": "0.0.1",
   "description": "Single Sign On (SSO) support for Eve Online",
-  "private": true,
-  "scripts": {
-  },
   "keywords": [
-    "es2015"
+    "eve-online",
+    "eve",
+    "mmo",
+    "sso",
+    "crest",
+    "ccp"
   ],
   "main": "dist/SingleSignOn.js",
   "homepage": "https://github.com/MichielvdVelde/eve-singlesignon",
