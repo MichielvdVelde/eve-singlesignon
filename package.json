@@ -9,7 +9,7 @@
     "es2015"
   ],
   "main": "dist/SingleSignOn.js",
-  "homepage": "http://eve.artofcoding.nl/packages/eve-singlesignon",
+  "homepage": "https://github.com/MichielvdVelde/eve-singlesignon",
   "author": "Michiel van der Velde <michiel@michielvdvelde.nl>",
   "license": "MIT",
   "devDependencies": {
