@@ -59,8 +59,9 @@ app.get('/sso_callback', function(req, res) {
 
 ## Changelog
 
-* v0.0.2 - 26 May 2016
- * Fixed getting an access token from a refresh token
+* v0.0.2/v0.0.3 - 26 May 2016
+ * (0.0.3) Added getters for most constructor parameters and setter for server URI
+ * (0.0.2) Fixed getting an access token from a refresh token
 * v0.0.1 - 25 May 2016
  * Initial release
 
