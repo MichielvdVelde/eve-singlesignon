@@ -1,6 +1,6 @@
 {
   "name": "eve-singlesignon",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Single Sign On (SSO) support for Eve Online",
   "keywords": [
     "eve-online",
