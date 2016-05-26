@@ -32,7 +32,7 @@ var SERVERS = exports.SERVERS = {
 };
 
 /**
- *
+ * Provides an interface to Eve Online's Single Sign-On system
 */
 
 var SingleSignOn = exports.SingleSignOn = function () {
@@ -69,15 +69,21 @@ var SingleSignOn = exports.SingleSignOn = function () {
   }
 
   /**
-   * Build a redirect URL where the client will be sent to
-   * @param string state Optional state parameter
-   * @param string scope Optional space-delimitd scope list
-   * @return string A fully qualified redirect URL
+   * Get the client ID
+   * @return string The client ID
   **/
 
 
   _createClass(SingleSignOn, [{
     key: 'getRedirectUrl',
+
+
+    /**
+     * Build a redirect URL where the client will be sent to
+     * @param string state Optional state parameter
+     * @param string scope Optional space-delimitd scope list
+     * @return string A fully qualified redirect URL
+    **/
     value: function getRedirectUrl() {
       var state = arguments.length <= 0 || arguments[0] === undefined ? null : arguments[0];
       var scope = arguments.length <= 1 || arguments[1] === undefined ? null : arguments[1];
@@ -166,6 +172,53 @@ var SingleSignOn = exports.SingleSignOn = function () {
           return resolve(result);
         }).catch(reject);
       });
+    }
+  }, {
+    key: 'clientId',
+    get: function get() {
+      return this._client_id;
+    }
+
+    /**
+     * Get the secret key
+     * @return string The secret key
+    **/
+
+  }, {
+    key: 'secretKey',
+    get: function get() {
+      return this._secret_key;
+    }
+
+    /**
+     * Get the redirect (callback) URI
+     * @return string the redirect URI
+    **/
+
+  }, {
+    key: 'redirectUri',
+    get: function get() {
+      return this._redirect_uri;
+    }
+
+    /**
+     * Get the server that's being used
+     * @return string The server URI
+    **/
+
+  }, {
+    key: 'server',
+    get: function get() {
+      return this._server;
+    }
+
+    /**
+     * Set the server URI to use
+     * @param string server The server URI to use
+    **/
+    ,
+    set: function set(server) {
+      this._server = server;
     }
   }]);
 

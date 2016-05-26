@@ -13,7 +13,7 @@ export const SERVERS = {
 };
 
 /**
- *
+ * Provides an interface to Eve Online's Single Sign-On system
 */
 export class SingleSignOn {
 
@@ -42,6 +42,46 @@ export class SingleSignOn {
 
     if(!this._options.useragent) this._options.useragent = pkg.name + '/' + pkg.version + ' - nodejs/' + process.version + ' - ' + pkg.homepage;
 
+  }
+
+  /**
+   * Get the client ID
+   * @return string The client ID
+  **/
+  get clientId() {
+    return this._client_id;
+  }
+
+  /**
+   * Get the secret key
+   * @return string The secret key
+  **/
+  get secretKey() {
+    return this._secret_key;
+  }
+
+  /**
+   * Get the redirect (callback) URI
+   * @return string the redirect URI
+  **/
+  get redirectUri() {
+    return this._redirect_uri;
+  }
+
+  /**
+   * Get the server that's being used
+   * @return string The server URI
+  **/
+  get server() {
+    return this._server;
+  }
+
+  /**
+   * Set the server URI to use
+   * @param string server The server URI to use
+  **/
+  set server(server) {
+    this._server = server;
   }
 
   /**
