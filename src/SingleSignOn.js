@@ -8,8 +8,8 @@ import { default as request } from 'request-promise';
  * Lists the available servers
 **/
 export const SERVERS = {
-  tranqulity: 'https://login.eveonline.com',
-  sisi: 'https://sisilogin.testeveonline.com'
+  LIVE: 'https://login.eveonline.com',
+  TEST: 'https://sisilogin.testeveonline.com'
 };
 
 /**
@@ -25,7 +25,7 @@ export class SingleSignOn {
    * @param array options Optional option settings
    * @param string server The URL to the server to use
   **/
-  constructor(client_id = null, secret_key = null, redirect_uri = null, options = {}, server = SERVERS.tranqulity) {
+  constructor(client_id = null, secret_key = null, redirect_uri = null, options = {}, server = SERVERS.LIVE) {
 
     if(client_id === null)
       throw new TypeError('client id can not be null');

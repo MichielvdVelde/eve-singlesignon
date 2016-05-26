@@ -27,8 +27,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
  * Lists the available servers
 **/
 var SERVERS = exports.SERVERS = {
-  tranqulity: 'https://login.eveonline.com',
-  sisi: 'https://sisilogin.testeveonline.com'
+  LIVE: 'https://login.eveonline.com',
+  TEST: 'https://sisilogin.testeveonline.com'
 };
 
 /**
@@ -51,7 +51,7 @@ var SingleSignOn = exports.SingleSignOn = function () {
     var secret_key = arguments.length <= 1 || arguments[1] === undefined ? null : arguments[1];
     var redirect_uri = arguments.length <= 2 || arguments[2] === undefined ? null : arguments[2];
     var options = arguments.length <= 3 || arguments[3] === undefined ? {} : arguments[3];
-    var server = arguments.length <= 4 || arguments[4] === undefined ? SERVERS.tranqulity : arguments[4];
+    var server = arguments.length <= 4 || arguments[4] === undefined ? SERVERS.LIVE : arguments[4];
 
     _classCallCheck(this, SingleSignOn);
 
