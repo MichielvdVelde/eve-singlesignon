@@ -79,10 +79,17 @@ export class SingleSignOn {
         'Authorization': 'Basic ' + (new Buffer(this._client_id + ':' + this._secret_key)).toString('base64')
       },
       form: {
-        grant_type: (refresh_token) ? 'refresh_token' : 'authorization_code',
+        grant_type: 'authorization_code',
         code: code
       }
     };
+
+    if(refresh_token) {
+      options.form = {
+        grant_type: 'refresh_token',
+        refresh_token: code
+      };
+    }
 
     return this._request(options);
   }
