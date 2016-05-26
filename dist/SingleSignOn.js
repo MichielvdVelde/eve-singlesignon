@@ -131,7 +131,7 @@ var SingleSignOn = exports.SingleSignOn = function () {
     }
 
     /**
-     * Verify an access token an retrieve baseic information
+     * Verify an access token an retrieve basic information
      * @param string access_token The access token to verify
      * @return Promise
     **/
