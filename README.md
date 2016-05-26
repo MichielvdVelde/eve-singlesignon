@@ -18,8 +18,15 @@ npm install eve-singlesignon --save
 In order to use Single Sign-On feature, you first need to create a new application
 in the [developer section](https://developers.eveonline.com).
 
-This will give you the required **client ID** and **secret**. You will also need to give
-the **redirect (or callback) URL**, the URL where the client will be redirected to after logging in.
+This will give you the required **client ID** and **secret**. You will need to give
+the **redirect (or callback) URL**, the URL where the client will be redirected to after logging in
+(this is the */sso_callback* in the example below).
+
+## Resources
+
+* [Authentication Flow](http://eveonline-third-party-documentation.readthedocs.io/en/latest/sso/authentication.html) (in `getAccessToken(code)`)
+* [Obtaining a Character ID](http://eveonline-third-party-documentation.readthedocs.io/en/latest/sso/obtaincharacterid.html) (in `verifyAccessToken()`)
+* [Refresh Tokens](http://eveonline-third-party-documentation.readthedocs.io/en/latest/sso/refreshtokens.html) (`getAccessToken()` with a refresh token)
 
 ## Example with Express
 
@@ -50,6 +57,19 @@ app.get('/sso_callback', function(req, res) {
 			console.log('Expires in:', result.expires_in);
 
 			// Store the access token so you can use it later
+
+			// Access basic character info
+			sso.verifyAccessToken(result.access_token)
+				.then((result) => {
+
+					// We now have some basic info...
+					console.log('Character ID:', result.CharacterID);
+					console.log('Character Name:', result.CharacterName);
+
+				})
+				.catch((err) => {
+					// An error occurred
+				});
 		})
 		.catch((err) => {
 			// An error occurred
