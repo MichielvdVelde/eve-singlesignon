@@ -37,8 +37,15 @@ functionality. Refer to the source code for further inline documentation.
 import { default as express } from 'express';
 import { SingleSignOn } from 'eve-singlesignon';
 
-const sso = new SingleSignOn('client_id', 'client_secret', 'redirect_url');
 const app = express();
+
+// Here you can provide the required parameters
+const CLIENT_ID = 'client_id';
+const SECRET_KEY = 'secret_key';
+const CALLBACK_URL = 'http://example.com/sso_callback';
+
+// Create a new instance with the set parameters
+const sso = new SingleSignOn('client_id', 'client_secret', 'redirect_url');
 
 // Refer the client to the Eve Online SSO login screen on login
 app.get('/login', function(req, res) {
@@ -74,6 +81,11 @@ app.get('/sso_callback', function(req, res) {
 		.catch((err) => {
 			// An error occurred
 		});
+});
+
+// Start the server
+app.listen(3000, () => {
+	console.log('Server running on port 3000');
 });
 ```
 
