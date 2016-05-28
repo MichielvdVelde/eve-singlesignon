@@ -115,7 +115,6 @@ var SingleSignOn = exports.SingleSignOn = function () {
 
       var options = {
         method: 'POST',
-        simple: false,
         uri: this._server + '/oauth/token',
         headers: {
           'Authorization': 'Basic ' + new Buffer(this._client_id + ':' + this._secret_key).toString('base64')
@@ -147,7 +146,6 @@ var SingleSignOn = exports.SingleSignOn = function () {
     value: function verifyAccessToken(access_token) {
       var options = {
         method: 'GET',
-        simple: false,
         uri: this._server + '/oauth/verify',
         headers: {
           'Authorization': 'Bearer ' + access_token
@@ -166,6 +164,7 @@ var SingleSignOn = exports.SingleSignOn = function () {
     key: '_request',
     value: function _request(options) {
       return new Promise(function (resolve, reject) {
+        options.simple = false;
         (0, _requestPromise2.default)(options).then(function (result) {
           result = JSON.parse(result);
           if (result.error) return reject(new Error('SSO Error: ' + result.error + ' (' + result.error_description + ')'));

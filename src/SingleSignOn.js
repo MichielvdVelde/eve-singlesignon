@@ -113,7 +113,6 @@ export class SingleSignOn {
   getAccessToken(code, refresh_token = false) {
     let options = {
       method: 'POST',
-      simple: false,
       uri: this._server + '/oauth/token',
       headers: {
         'Authorization': 'Basic ' + (new Buffer(this._client_id + ':' + this._secret_key)).toString('base64')
@@ -142,7 +141,6 @@ export class SingleSignOn {
   verifyAccessToken(access_token) {
     let options = {
       method: 'GET',
-      simple: false,
       uri: this._server + '/oauth/verify',
       headers: {
         'Authorization': 'Bearer ' + access_token
@@ -158,6 +156,7 @@ export class SingleSignOn {
   **/
   _request(options) {
     return new Promise((resolve, reject) => {
+      options.simple = false;
       request(options)
         .then((result) => {
           result = JSON.parse(result);
