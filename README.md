@@ -54,33 +54,23 @@ app.get('/login', function(req, res) {
 
 // This is the callback that is called when the client has logged in
 app.get('/sso_callback', function(req, res) {
-
 	// Get an access token for this authorization code
-	sso.getAccessToken(req.query.code)
-		.then((result) => {
+	sso.getAccessToken(req.query.code).then(result => {
+		// The result contains the access token and expiry time
+		console.log('Access Token:', result.access_token);
+		console.log('Expires in:', result.expires_in);
+		// Store the access token so you can use it later
 
-			// The result contains the access token and expiry time
-			console.log('Access Token:', result.access_token);
-			console.log('Expires in:', result.expires_in);
-
-			// Store the access token so you can use it later
-
-			// Access basic character info
-			sso.verifyAccessToken(result.access_token)
-				.then((result) => {
-
-					// We now have some basic info...
-					console.log('Character ID:', result.CharacterID);
-					console.log('Character Name:', result.CharacterName);
-
-				})
-				.catch((err) => {
-					// An error occurred
-				});
-		})
-		.catch((err) => {
-			// An error occurred
-		});
+		// Access basic character info
+		return sso.verifyAccessToken(result.access_token);
+	})
+	.then(result => {
+		// We now have some basic info...
+		console.log('Character ID:', result.CharacterID);
+		console.log('Character Name:', result.CharacterName);
+	.catch(err => {
+		// An error occurred
+	});
 });
 
 // Start the server
