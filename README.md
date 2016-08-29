@@ -4,9 +4,6 @@ This module provides a simple interface to [Eve Online](https://eve-online.com)'
 oAuth process. Requested access tokens can then be used to authenticate an Eve
 character or to access the RESTful CREST API.
 
-Further documentation is forthcoming. For now you can look at the code to find out
-which options (besides the ones shown in the example below) this package supports.
-
 ## Install
 
 ```
@@ -45,7 +42,7 @@ const SECRET_KEY = 'secret_key';
 const CALLBACK_URL = 'http://example.com/sso_callback';
 
 // Create a new instance with the set parameters
-const sso = new SingleSignOn('client_id', 'client_secret', 'redirect_url');
+const sso = new SingleSignOn(CLIENT_ID, SECRET_KEY, CALLBACK_URL);
 
 // Refer the client to the Eve Online SSO login screen on login
 app.get('/login', function(req, res) {
