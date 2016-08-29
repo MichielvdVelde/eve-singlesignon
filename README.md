@@ -78,6 +78,8 @@ app.listen(3000, () => {
 
 ## Changelog
 
+* v0.0.5 - 28 August 2016
+  * Update readme
 * v0.0.4 - 28 May 2016
   * Move the `simple` request option to `_request`
 * v0.0.2/v0.0.3 - 26 May 2016
