@@ -65,6 +65,7 @@ app.get('/sso_callback', function(req, res) {
 		// We now have some basic info...
 		console.log('Character ID:', result.CharacterID);
 		console.log('Character Name:', result.CharacterName);
+	})
 	.catch(err => {
 		// An error occurred
 	});
