@@ -1,5 +1,7 @@
 # Single Sign-On (SSO) support for Eve Online
 
+***DEPRECATED*** Use [eve-sso](https://github.com/MichielvdVelde/eve-sso) instead!
+
 This module provides a simple interface to [Eve Online](https://eve-online.com)'s Single Sign-On
 oAuth process. Requested access tokens can then be used to authenticate an Eve
 character or to access the RESTful CREST API.
